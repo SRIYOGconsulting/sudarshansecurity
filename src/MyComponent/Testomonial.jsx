@@ -1,64 +1,125 @@
-import React, { useRef, useState } from "react";
-import { Feedback } from "./ScrollImange";
+
+   
+import React, { useState, useRef, useEffect } from 'react';
 
 export default function Testimonial() {
-  const sliderRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const carouselRef = useRef(null);
 
-  const onMouseDown = (e) => {
-    setIsDragging(true);
-    setStartX(e.pageX - sliderRef.current.offsetLeft);
-    setScrollLeft(sliderRef.current.scrollLeft);
-    sliderRef.current.style.cursor = "grabbing";
-    e.preventDefault();
+  const testimonials = [
+    {
+      name: "Samir Poudel",
+      text: "I'm new to the Sudarshan Security team. As Property Managers, we are frequently concerned with making the right recommendations to our Boards. The staff assigned to my guardhouse has turned me into a hero in the eyes of the Board. Their customer service is outstanding."
+    },
+    {
+      name: "Samir Poudel",
+      text: "I'm new to the Sudarshan Security team. As Property Managers, we are frequently concerned with making the right recommendations to our Boards. The staff assigned to my guardhouse has turned me into a hero in the eyes of the Board. Their customer service is outstanding."
+    },
+    {
+      name: "Samir Poudel",
+      text: "I'm new to the Sudarshan Security team. As Property Managers, we are frequently concerned with making the right recommendations to our Boards. The staff assigned to my guardhouse has turned me into a hero in the eyes of the Board. Their customer service is outstanding."
+    },
+
+  ];
+
+  const visibleItems = 2; // Show 2 items at a time
+  const totalItems = testimonials.length;
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex >= totalItems - visibleItems ? 0 : prevIndex + 1
+    );
   };
 
-  const onMouseMove = (e) => {
-    if (!isDragging) return;
-    const x = e.pageX - sliderRef.current.offsetLeft;
-    const walk = (x - startX) * 1; // scroll speed
-    sliderRef.current.scrollLeft = scrollLeft - walk;
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? totalItems - visibleItems : prevIndex - 1
+    );
   };
 
-  const onMouseUpOrLeave = () => {
+  // Handle drag end to detect swipe
+  const handleDragEnd = () => {
     setIsDragging(false);
-    sliderRef.current.style.cursor = "grab";
+    if (carouselRef.current) {
+      carouselRef.current.style.cursor = 'grab';
+    }
   };
+
+  // Reset to first slide when reaching the end (for infinite loop)
+  useEffect(() => {
+    if (currentIndex > totalItems - visibleItems) {
+      setCurrentIndex(0);
+    }
+  }, [currentIndex, totalItems, visibleItems]);
+
+  // Auto-advance slides
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   return (
-    <div className=" mx-auto bg-[#f2f4f7] p-6 select-none">
-      <div className="mb-6 text-center">
-        <h1 className="text-2xl font-bold text-green-400 mb-2">Feedback</h1>
-        <p className="text-lg text-gray-900 mb-2">
-          What they're talking about
-        </p>
-      </div>
-
-      <div
-        ref={sliderRef}
-        className="flex gap-1 cursor-grab "
-        onMouseDown={onMouseDown}
-        onMouseMove={onMouseMove}
-        onMouseUp={onMouseUpOrLeave}
-        onMouseLeave={onMouseUpOrLeave}
-        style={{ overflow: "hidden" , maxwidth:"500px"}} 
+    <div className='bg-[#e8edf6]'>
+    <div className="mx-auto p-6 select-none  max-w-4xl">
+      {/* Carousel Container */}
+      <div 
+        ref={carouselRef}
+        className="flex overflow-hidden cursor-grab space-x-6 py-4 "
+        onMouseDown={(e) => {
+          setIsDragging(true);
+          setStartX(e.pageX - carouselRef.current.offsetLeft);
+          setScrollLeft(carouselRef.current.scrollLeft);
+          carouselRef.current.style.cursor = 'grabbing';
+        }}
+        onMouseLeave={handleDragEnd}
+        onMouseUp={handleDragEnd}
+        onMouseMove={(e) => {
+          if (!isDragging) return;
+          e.preventDefault();
+          const x = e.pageX - carouselRef.current.offsetLeft;
+          const walk = (x - startX) * 2;
+          carouselRef.current.scrollLeft = scrollLeft - walk;
+        }}
+        style={{ 
+          scrollBehavior: 'smooth',
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none'
+        }}
       >
-        {Feedback.map((item) => (
+        {testimonials.map((testimonial, index) => (
           <div
-            key={item.id}
-            className="flex-shrink-0 w-1/2 h-full  "
+            key={index}
+            className="flex-shrink-0 transition-all duration-500 ease-in-out transform"
+            style={{ 
+              width: `calc((100% - 1.5rem) / ${visibleItems})`,
+              transform: `translateX(-${currentIndex * (100 / visibleItems)}%)`,
+              opacity: index >= currentIndex && index < currentIndex + visibleItems ? 1 : 0.7
+            }}
           >
-            <img
-              src={item.image}
-              alt={item.alt || "feedback"}
-              className="w-96 h-full object-cover "
-              draggable="false"
-            />
+            <div className="text-center mb-4">
+              <h1 className="text-2xl font-bold text-black">{testimonial.name}</h1>
+            </div>
+            <div className="flex justify-center items-center w-full h-72 bg-white p-6 rounded-lg mx-auto shadow-lg">
+              <p className="text-gray-600 leading-relaxed text-center">
+                {testimonial.text}
+              </p>
+            </div>
           </div>
         ))}
       </div>
+
+
+   
+    </div>
     </div>
   );
 }
+    
+
+

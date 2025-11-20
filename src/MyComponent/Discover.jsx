@@ -3,7 +3,7 @@ import React from 'react'
 export default function Discover() {
   return (
     <div>
-          <section className="w-full bg-[#f2f4f7] py-20 px-6 md:px-20">
+          <section className="w-full bg-[#e8edf6] py-20 px-6 md:px-20">
       <div className="max-w-4xl mx-auto">
 
         {/* Top Text */}

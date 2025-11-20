@@ -4,6 +4,7 @@ import Nav from '../MyComponent/Nav'
 import Discover from '../MyComponent/Discover'
 import Image from '../MyComponent/Image'
 import TestimonialCarousel from '../MyComponent/Testomonial'
+import OurCommitment from '../MyComponent/OurCommitment'
 
 
 export default function Homepage() {
@@ -14,6 +15,7 @@ export default function Homepage() {
       <Discover/>
       <Image/>
       <TestimonialCarousel/>
+      <OurCommitment/>
     </div>
   )
 }
