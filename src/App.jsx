@@ -1,16 +1,14 @@
-import { useRef, useState, useEffect } from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from './Pages/Homepage';
+
 function App() {
-
-
-
   return (
- <div>
-<Homepage/>
-
-</div>
-  )
+    
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+      </Routes>
+   
+  );
 }
 
-export default App
+export default App;
