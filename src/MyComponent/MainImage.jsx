@@ -1,5 +1,5 @@
 import React from 'react'
-import mainImg from '../assets/1.png'
+import { sliderImages } from "../Data";
 import TextType from './Welcome/TextType'
 export default function MainImage() {
   return (
@@ -7,7 +7,7 @@ export default function MainImage() {
          <section
       className="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: `url(${mainImg}) ` 
+        backgroundImage: `url(${sliderImages[0]}) ` 
       }}
     >
 
