@@ -1,4 +1,5 @@
 import React from 'react'
+import { OurImages } from "../Data";
 
 export default function OurCommitment() {
   return (
@@ -8,7 +9,7 @@ export default function OurCommitment() {
         <div className='flex justify-center items-center gap-3 '>
 <div className='bg-white max-w-80  p-6 mx-auto text-center'>
 
-    <h1 className='text-2xl text-black font-bold mb-1'>vision</h1>
+    <h1 className='text-2xl text-black font-bold mb-1 flex justify-center gap-2'> <img src={OurImages[0]}alt="vision" className='w-10' /> vision</h1>
 <p className='text-black leading-relaxed'>
              A devoted security team, works to reach the highest level of customer satisfaction 
           through insightful risk solutions, exceptional service, and the best possible 
@@ -17,7 +18,7 @@ export default function OurCommitment() {
 </div>
 <div className='bg-white max-w-80  p-6 mx-auto text-center'>
 
-    <h1 className='text-2xl text-black font-bold mb-1'>vision</h1>
+    <h1 className='text-2xl text-black font-bold mb-1 flex justify-center gap-2'> <img src={OurImages[1]} alt="" className='w-10' />vision</h1>
 <p className='text-black leading-relaxed'>
              A devoted security team, works to reach the highest level of customer satisfaction 
           through insightful risk solutions, exceptional service, and the best possible 
@@ -26,7 +27,7 @@ export default function OurCommitment() {
 </div>
 <div className='bg-white max-w-80  p-6 mx-auto text-center'>
 
-    <h1 className='text-2xl text-black font-bold mb-1'>vision</h1>
+    <h1 className='text-2xl text-black font-bold mb-1 flex justify-center gap-2'> <img src={OurImages[2]} alt="mission" className='w-10' />vision</h1>
 <p className='text-black leading-relaxed'>
              A devoted security team, works to reach the highest level of customer satisfaction 
           through insightful risk solutions, exceptional service, and the best possible 

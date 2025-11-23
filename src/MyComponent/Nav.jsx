@@ -1,55 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { logo } from "../Data";
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation(); // track current path
 
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' },
-    { id: 'message', label: 'Message' },
-    { id: 'team', label: 'Team' },
-    { id: 'contact', label: 'Contact' },
+    { id: "home", label: "Home", path: "/" },
+    { id: "about", label: "About", path: "/about" },
+    { id: "services", label: "Services", path: "/services" },
+    { id: "message", label: "Message", path: "/messages" },
+    { id: "team", label: "Team", path: "/team" },
+    { id: "contact", label: "Contact", path: "/contact" },
   ];
 
-  const handleNavClick = (itemId) => {
-    setActiveLink(itemId);
-    setIsMobileMenuOpen(false);
-  };
-
   return (
-    <nav className=" text-yellow-50">
+    <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-90 text-yellow-50 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex flex-col justify-center">
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-xl text-yellow-300">ES</span>
-              <span className="text-lg text-yellow-20 text-yellow-300">Sudarshan</span>
-            </div>
-            <div className="text-sm">Security Services</div>
-          </div>
+          <Link to="/">
+            <img src={logo[0]} alt="Logo" className="h-12" />
+          </Link>
 
           {/* Desktop Menu */}
           <ul className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={() => handleNavClick(item.id)}
+                <Link
+                  to={item.path}
                   className={`hover:text-yellow-300 transition ${
-                    activeLink === item.id ? 'underline' : ''
+                    location.pathname === item.path ? "underline" : ""
                   }`}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex flex-col justify-center space-y-1 cursor-pointer" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {/* Mobile Hamburger */}
+          <div
+            className="md:hidden flex flex-col justify-center space-y-1 cursor-pointer"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             <span className="block w-6 h-0.5 bg-white"></span>
             <span className="block w-6 h-0.5 bg-white"></span>
             <span className="block w-6 h-0.5 bg-white"></span>
@@ -58,18 +53,18 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <ul className="md:hidden  space-y-2 py-4">
+          <ul className="md:hidden absolute top-20 left-0 w-full bg-black bg-opacity-90 space-y-2 py-4 z-40">
             {navItems.map((item) => (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  onClick={() => handleNavClick(item.id)}
+                <Link
+                  to={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className={`block px-4 py-2 hover:bg-yellow-200 hover:text-black rounded ${
-                    activeLink === item.id ? 'underline' : ''
+                    location.pathname === item.path ? "underline" : ""
                   }`}
                 >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

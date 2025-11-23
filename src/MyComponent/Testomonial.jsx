@@ -12,14 +12,20 @@ export default function Testimonial() {
   const testimonials = [
     {
       name: "Samir Poudel",
+      image:'/images/testshape.png',
+       image2:'/images/1.jpg',
       text: "I'm new to the Sudarshan Security team. As Property Managers, we are frequently concerned with making the right recommendations to our Boards. The staff assigned to my guardhouse has turned me into a hero in the eyes of the Board. Their customer service is outstanding."
     },
     {
       name: "Samir Poudel",
+      image:'/images/testshape.png',
+       image2:'/images/1.jpg',
       text: "I'm new to the Sudarshan Security team. As Property Managers, we are frequently concerned with making the right recommendations to our Boards. The staff assigned to my guardhouse has turned me into a hero in the eyes of the Board. Their customer service is outstanding."
     },
     {
       name: "Samir Poudel",
+      image:'/images/testshape.png',
+       image2:'/images/1.jpg',
       text: "I'm new to the Sudarshan Security team. As Property Managers, we are frequently concerned with making the right recommendations to our Boards. The staff assigned to my guardhouse has turned me into a hero in the eyes of the Board. Their customer service is outstanding."
     },
 
@@ -66,6 +72,7 @@ export default function Testimonial() {
 
   return (
     <div className='bg-[#e8edf6]'>
+
     <div className="mx-auto p-6 select-none  max-w-4xl">
       {/* Carousel Container */}
       <div 
@@ -102,9 +109,14 @@ export default function Testimonial() {
               opacity: index >= currentIndex && index < currentIndex + visibleItems ? 1 : 0.7
             }}
           >
+            
             <div className="text-center mb-4">
               <h1 className="text-2xl font-bold text-black">{testimonial.name}</h1>
             </div>
+            
+            <div className='flex '>
+                            <img src={testimonial.image2} alt="" className='w-18'/>
+            <img src={testimonial.image} alt="" /></div>
             <div className="flex justify-center items-center w-full h-72 bg-white p-6 rounded-lg mx-auto shadow-lg">
               <p className="text-gray-600 leading-relaxed text-center">
                 {testimonial.text}
