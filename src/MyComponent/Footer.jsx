@@ -1,92 +1,237 @@
-import React from "react";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Footer = () => {
-    return (
-        <footer className="bg-[#f5f6fa] text-gray-600">
-            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
 
-                {/* Logo & Description */}
-                <div>
+const Footer = () => {
+    // Social media configuration - UPDATE WITH YOUR ACTUAL LINKS
+    const socialMedia = [
+        {
+            name: 'Facebook',
+            url: 'https://www.facebook.com/people/Sudarshan-Security-Services-Pvt-Ltd/100057211459760/',
+            icon: ['fab', 'facebook-f'],
+            color: 'bg-[#1877F2]',
+            ariaLabel: 'Visit our Facebook page'
+        },
+        {
+            name: 'Instagram', 
+            url: 'https://www.instagram.com/sudarshansecurity/',
+            icon: ['fab', 'instagram'],
+            color: 'bg-gradient-to-r from-purple-500 to-pink-500',
+            ariaLabel: 'Visit our Instagram profile'
+        },
+        {
+            name: 'Twitter',
+            url: 'https://twitter.com/sudarshansecurity',
+            icon: ['fab', 'twitter'],
+            color: 'bg-[#1DA1F2]',
+            ariaLabel: 'Visit our Twitter profile'
+        },
+    
+    ];
+    const contact=()=>[
+        {
+            name:'info@sudarshansecurity.com.np',
+            url: 'mailto:info@sudarshansecurity.com.np',
+            icon:['fab','envelop']
+            
+        },
+       {   name:'+977-9852054100',
+            url: 'tel-+977-9852054100',
+            icon:['fab','telephone']},
+    ]
+
+    // Navigation links
+    const navLinks = [
+        { name: 'About us', href: '/about' },
+        { name: 'Gallery', href: '/gallery' },
+        { name: 'Services', href: '/services' },
+        { name: 'FAQs', href: '/faqs' }
+    ];
+
+    // Contact information
+    const contactInfo = {
+        address: 'Hospital Road, Itahari, Sub-Metropolitan City, Ward no.9 Sunsari, Nepal',
+        email: 'info@sudarshansecurity.com.np',
+        phone: '+977-9852054100'
+    };
+
+    // Handlers
+    const handleEmailLogin = () => {
+        window.location.href = '/email-login';
+    };
+
+    const handleEmailClick = () => {
+        window.location.href = `mailto:${contactInfo.email}`;
+    };
+
+    const handlePhoneClick = () => {
+        // Remove dashes for tel: links
+        const cleanPhone = contactInfo.phone.replace(/-/g, '');
+        window.location.href = `tel:${cleanPhone}`;
+    };
+
+    return (
+        <footer className="bg-[#f5f6fa] text-gray-600" role="contentinfo">
+            <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                {/* Company Information */}
+                <div className="space-y-4">
                     <img
-                        src="/images/logo-2.png"
-                        alt="Sudarshan Security"
-                        className="h-12 mb-4"
+                        src="/images/footerlogo.png"
+                        alt="Sudarshan Security Services"
+                        className="h-12 w-auto"
                     />
-                    <p className="mb-4 text-gray-500">
-                        We as a dedicated security team, work to meet the highest level of customer satisfaction and the best possible protection for our clients and their assets.
+                    <p className="text-gray-500 leading-relaxed">
+                        We as a dedicated security team, work to meet the highest level of customer 
+                        satisfaction and the best possible protection for our clients and their assets.
                     </p>
-                    <button className="bg-red-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-800 transition">
+                    <button 
+                        onClick={handleEmailLogin}
+                        className="bg-red-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                        aria-label="Access email login"
+                    >
                         EMAIL LOGIN
                     </button>
                 </div>
 
-                {/* Links */}
+                {/* Navigation Links */}
                 <div>
-                    <h2 className="text-red-800 font-bold mb-4">Links</h2>
-                    <ul className="space-y-2">
-                        <li className="hover:text-red-700 cursor-pointer transition">About us</li>
-                        <li className="hover:text-red-700 cursor-pointer transition">Gallery</li>
-                        <li className="hover:text-red-700 cursor-pointer transition">Services</li>
-                        <li className="hover:text-red-700 cursor-pointer transition">FAQs</li>
-                    </ul>
-                </div>
-
-                {/* Social Presence */}
-                <div>
-                    <h2 className="text-red-800 font-bold mb-4">Social Presence</h2>
+                    <h2 className="text-red-800 font-bold mb-4 text-lg">Quick Links</h2>
                     <ul className="space-y-3">
-                        <li className="group relative overflow-hidden cursor-pointer">
-                            <div className="flex items-center gap-3 transition-all duration-300">
-                                <div className="relative w-8 h-8 gap-3 rounded-full overflow-hidden ">
-                                    <div></div>
-                                    <FontAwesomeIcon icon={['fab', 'twitter']} />
-                                </div>
-
-                            </div>
-                            Twitter
-                        </li>
-                        <li className="flex items-center gap-3 hover:text-red-700 cursor-pointer transition">
-                            <div className="w-8 h-8 bg-[#1877F2] rounded-full flex justify-center items-center text-white">
-                                <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-                            </div>
-                            Facebook
-                        </li>
-                        <li className="flex items-center gap-3 hover:text-red-700 cursor-pointer transition">
-                            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex justify-center items-center text-white">
-                                <FontAwesomeIcon icon={['fab', 'instagram']} />
-                            </div>
-                            Instagram
-                        </li>
+                        {navLinks.map((link) => (
+                            <li key={link.name}>
+                                <a 
+                                    href={link.href}
+                                    className="
+                                        text-gray-400 
+                                        hover:text-red-700 
+                                        transition-all 
+                                        duration-300 
+                                        relative
+                                        hover:translate-x-2
+                                        before:content-['›']
+                                        before:absolute
+                                        before:-left-4
+                                        before:opacity-0
+                                        before:transform
+                                        before:-translate-x-2
+                                        before:transition-all
+                                        before:duration-300
+                                        before:text-red-700
+                                        before:font-bold
+                                        hover:before:opacity-100
+                                        hover:before:translate-x-0
+                                        block py-1
+                                    "
+                                    aria-label={`Navigate to ${link.name}`}
+                                >
+                                    {link.name}
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </div>
 
-                {/* Contact */}
+                {/* Social Media */}
                 <div>
-                    <h2 className="text-red-800 font-bold mb-4">Contact</h2>
-                    <p className="text-gray-500 mb-4">
-                        Hospital Road, Itahari, Sub-Metropolitan City, Ward no.9 Sunsari, Nepal
-                    </p>
-                    <p className="flex items-center gap-3 mb-2">
-                        <FontAwesomeIcon icon="envelope" className="text-red-700 w-4" />
-                        <span className="font-semibold hover:text-red-700 cursor-pointer">
-                            info@sudarshansecurity.com.np
-                        </span>
-                    </p>
-                    <p className="flex items-center gap-3">
-                        <FontAwesomeIcon icon="phone" className="text-red-700 w-4" />
-                        <span className="font-semibold hover:text-red-700 cursor-pointer">
-                            +977-9852054100
-                        </span>
-                    </p>
+                    <h2 className="text-red-800 font-bold mb-4 text-lg">Follow Us</h2>
+                    <ul className="space-y-4">
+                        {socialMedia.map((social) => (
+                            <li key={social.name} className="flex items-center gap-3">
+                                
+                                    <a
+                                        href={social.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block"
+                                        aria-label={social.ariaLabel}
+                                    >
+                                        <div className="relative w-10 h-10 rounded-full overflow-hidden group">
+                                            {/* Default background */}
+                                            <div className="absolute inset-0 bg-gray-800"></div>
+                                            {/* Color overlay on hover */}
+                                            <div className={`absolute inset-0 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out ${social.color}`}></div>
+                                            {/* Icon */}
+                                            <div className="absolute inset-0 flex items-center justify-center text-white">
+                                                <FontAwesomeIcon 
+                                                    icon={social.icon} 
+                                                    className="text-sm"
+                                                />
+                                            </div>
+                                        </div>
+                                    </a>
+                               
+                                <span className="text-gray-400 group-hover:text-red-700 transition-colors duration-300 font-medium">
+                                    {social.name}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Contact Information */}
+                <div>
+                    <h2 className="text-red-800 font-bold mb-4 text-lg">Contact Us</h2>
+                    <div className="space-y-4">
+                        {
+                        contact.map((m)=>(
+                        <div key={m.name}>
+                            <a href={contact.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block"
+                                        aria-label={social.ariaLabel}></a>
+                        </div>
+
+                        ))
+                        }
+                         
+                        <p className="text-gray-500 leading-relaxed">
+                            {contactInfo.address}
+                        </p>
+                        
+                        <div className="flex items-center gap-3 group">
+                            <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <FontAwesomeIcon 
+                                    icon="envelope" 
+                                    className="text-red-700 text-sm" 
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <button 
+                                onClick={handleEmailClick}
+                                className="font-semibold text-gray-600 hover:text-red-700 transition-colors duration-300 text-left break-all"
+                                aria-label={`Send email to ${contactInfo.email}`}
+                            >
+                                {contactInfo.email}
+                            </button>
+                        </div>
+                        
+                        <div className="flex items-center gap-3 group">
+                            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <FontAwesomeIcon 
+                                    icon="phone" 
+                                    className="text-green-700 text-sm" 
+                                    aria-hidden="true"
+                                />
+                            </div>
+                            <button 
+                                onClick={handlePhoneClick}
+                                className="font-semibold text-gray-600 hover:text-red-700 transition-colors duration-300 text-left"
+                                aria-label={`Call ${contactInfo.phone}`}
+                            >
+                                {contactInfo.phone}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             {/* Bottom Bar */}
             <div className="bg-red-700 text-white py-4 px-6">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-                    <p>All Rights Reserved © 2025 Sudarshan Security Services</p>
-                    <p>Technology Partner: SRIYOG Consulting</p>
+                    <p>&copy; {new Date().getFullYear()} Sudarshan Security Services. All Rights Reserved.</p>
+                    <p>Technology Partner: <strong>SRIYOG Consulting</strong></p>
                 </div>
             </div>
         </footer>
