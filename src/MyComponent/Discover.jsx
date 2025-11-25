@@ -49,7 +49,7 @@ export default function Discover() {
 
     {/* Button */}
       <div className='flex j'>
-        <button className=" group mt-1 px-10 py-4  text-white font-semibold bg-yellow-400 rounded-full text-sm md:text-base hover:bg-red-800  relative overflow-hidden transition-all duration-500 ">
+        <button className=" group mt-1 px-10 py-4  text-white font-semibold bg-red-800 rounded-full text-sm md:text-base hover:bg-red-800  relative overflow-hidden transition-all duration-500 ">
        <span className='relative z-10 group-hover:text-black'>Discover MORE➤</span>
        <span className='absolute inset-0 bg-green-800 -translate-y-full group-hover:translate-y-0 transition-transform duration-500'></span>
         </button>

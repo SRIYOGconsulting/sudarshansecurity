@@ -1,9 +1,7 @@
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
 const Footer = () => {
-    // Social media configuration - UPDATE WITH YOUR ACTUAL LINKS
+    // Social media configuration
     const socialMedia = [
         {
             name: 'Facebook',
@@ -13,7 +11,7 @@ const Footer = () => {
             ariaLabel: 'Visit our Facebook page'
         },
         {
-            name: 'Instagram', 
+            name: 'Instagram',
             url: 'https://www.instagram.com/sudarshansecurity/',
             icon: ['fab', 'instagram'],
             color: 'bg-gradient-to-r from-purple-500 to-pink-500',
@@ -26,19 +24,36 @@ const Footer = () => {
             color: 'bg-[#1DA1F2]',
             ariaLabel: 'Visit our Twitter profile'
         },
-    
     ];
-    const contact=()=>[
-        {
-            name:'info@sudarshansecurity.com.np',
-            url: 'mailto:info@sudarshansecurity.com.np',
-            icon:['fab','envelop']
-            
+
+    // Contact information - structured like social links
+    const contactLinks = [
+          {
+            name: 'Address',
+            value: 'Hospital Road, Itahari, Sub-Metropolitan City, Ward no.9 Sunsari, Nepal',
+            url: 'https://maps.google.com/?q=Hospital+Road,Itahari,Sunsari,Nepal', // Google Maps link
+            icon: 'map-marker-alt',
+            color: 'text-blue-500',
+            ariaLabel: 'View our location on Google Maps'
         },
-       {   name:'+977-9852054100',
-            url: 'tel-+977-9852054100',
-            icon:['fab','telephone']},
-    ]
+        {
+            name: 'Email',
+            value: 'info@sudarshansecurity.com.np',
+            url: 'mailto:info@sudarshansecurity.com.np',
+            icon: 'envelope',
+            color: 'text-[#EA4335]',
+            ariaLabel: 'Send email to info@sudarshansecurity.com.np'
+        },
+        {
+            name: 'Phone',
+            value: '+977-9852054100',
+            url: 'tel:+9779852054100',
+            icon: 'phone',
+            color: 'text-[#34A853]',
+            ariaLabel: 'Call +977-9852054100'
+        },
+      
+    ];
 
     // Navigation links
     const navLinks = [
@@ -48,32 +63,15 @@ const Footer = () => {
         { name: 'FAQs', href: '/faqs' }
     ];
 
-    // Contact information
-    const contactInfo = {
-        address: 'Hospital Road, Itahari, Sub-Metropolitan City, Ward no.9 Sunsari, Nepal',
-        email: 'info@sudarshansecurity.com.np',
-        phone: '+977-9852054100'
-    };
-
     // Handlers
     const handleEmailLogin = () => {
         window.location.href = '/email-login';
     };
 
-    const handleEmailClick = () => {
-        window.location.href = `mailto:${contactInfo.email}`;
-    };
-
-    const handlePhoneClick = () => {
-        // Remove dashes for tel: links
-        const cleanPhone = contactInfo.phone.replace(/-/g, '');
-        window.location.href = `tel:${cleanPhone}`;
-    };
-
     return (
         <footer className="bg-[#f5f6fa] text-gray-600" role="contentinfo">
             <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
-                
+
                 {/* Company Information */}
                 <div className="space-y-4">
                     <img
@@ -82,10 +80,10 @@ const Footer = () => {
                         className="h-12 w-auto"
                     />
                     <p className="text-gray-500 leading-relaxed">
-                        We as a dedicated security team, work to meet the highest level of customer 
+                        We as a dedicated security team, work to meet the highest level of customer
                         satisfaction and the best possible protection for our clients and their assets.
                     </p>
-                    <button 
+                    <button
                         onClick={handleEmailLogin}
                         className="bg-red-700 text-white px-6 py-2 rounded-full font-semibold hover:bg-red-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                         aria-label="Access email login"
@@ -100,7 +98,7 @@ const Footer = () => {
                     <ul className="space-y-3">
                         {navLinks.map((link) => (
                             <li key={link.name}>
-                                <a 
+                                <a
                                     href={link.href}
                                     className="
                                         text-gray-400 
@@ -138,30 +136,28 @@ const Footer = () => {
                     <ul className="space-y-4">
                         {socialMedia.map((social) => (
                             <li key={social.name} className="flex items-center gap-3">
-                                
-                                    <a
-                                        href={social.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block"
-                                        aria-label={social.ariaLabel}
-                                    >
-                                        <div className="relative w-10 h-10 rounded-full overflow-hidden group">
-                                            {/* Default background */}
-                                            <div className="absolute inset-0 bg-gray-800"></div>
-                                            {/* Color overlay on hover */}
-                                            <div className={`absolute inset-0 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out ${social.color}`}></div>
-                                            {/* Icon */}
-                                            <div className="absolute inset-0 flex items-center justify-center text-white">
-                                                <FontAwesomeIcon 
-                                                    icon={social.icon} 
-                                                    className="text-sm"
-                                                />
-                                            </div>
+                                <a
+                                    href={social.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block"
+                                    aria-label={social.ariaLabel}
+                                >
+                                    <div className="relative w-10 h-10 rounded-full overflow-hidden group">
+                                        {/* Default background */}
+                                        <div className="absolute inset-0 bg-gray-800"></div>
+                                        {/* Color overlay on hover */}
+                                        <div className={`absolute inset-0 transform -translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out ${social.color}`}></div>
+                                        {/* Icon */}
+                                        <div className="absolute inset-0 flex items-center justify-center text-white">
+                                            <FontAwesomeIcon
+                                                icon={social.icon}
+                                                className="text-sm"
+                                            />
                                         </div>
-                                    </a>
-                               
-                                <span className="text-gray-400 group-hover:text-red-700 transition-colors duration-300 font-medium">
+                                    </div>
+                                </a>
+                                <span className="text-gray-400 font-medium">
                                     {social.name}
                                 </span>
                             </li>
@@ -169,66 +165,49 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Contact Information */}
+                {/* Contact Information - Updated with <a> tags */}
                 <div>
                     <h2 className="text-red-800 font-bold mb-4 text-lg">Contact Us</h2>
-                    <div className="space-y-4">
-                        {
-                        contact.map((m)=>(
-                        <div key={m.name}>
-                            <a href={contact.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="block"
-                                        aria-label={social.ariaLabel}></a>
-                        </div>
+                    <ul className="space-y-4">
+                        {contactLinks.map((contact) => (
+                            <li key={contact.name} className="flex items-center gap-3">
+                                <a
+                                    href={contact.url}
+                                    target={contact.url.startsWith('http') ? '_blank' : '_self'}
+                                    rel={contact.url.startsWith('http') ? 'noopener noreferrer' : ''}
+                                    className="block"
+                                    aria-label={contact.ariaLabel}
+                                >
+                                    <div className="relative w-10 h-10 ">
 
-                        ))
-                        }
-                         
-                        <p className="text-gray-500 leading-relaxed">
-                            {contactInfo.address}
-                        </p>
-                        
-                        <div className="flex items-center gap-3 group">
-                            <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <FontAwesomeIcon 
-                                    icon="envelope" 
-                                    className="text-red-700 text-sm" 
-                                    aria-hidden="true"
-                                />
-                            </div>
-                            <button 
-                                onClick={handleEmailClick}
-                                className="font-semibold text-gray-600 hover:text-red-700 transition-colors duration-300 text-left break-all"
-                                aria-label={`Send email to ${contactInfo.email}`}
-                            >
-                                {contactInfo.email}
-                            </button>
-                        </div>
-                        
-                        <div className="flex items-center gap-3 group">
-                            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                <FontAwesomeIcon 
-                                    icon="phone" 
-                                    className="text-green-700 text-sm" 
-                                    aria-hidden="true"
-                                />
-                            </div>
-                            <button 
-                                onClick={handlePhoneClick}
-                                className="font-semibold text-gray-600 hover:text-red-700 transition-colors duration-300 text-left"
-                                aria-label={`Call ${contactInfo.phone}`}
-                            >
-                                {contactInfo.phone}
-                            </button>
-                        </div>
-                    </div>
+
+
+
+                                        {/* Icon */}
+                                        <FontAwesomeIcon
+                                            icon={contact.icon}
+                                            className={`text-sm ${contact.color}`}
+                                        />
+
+
+                                    </div>
+                                </a>
+                                <div className="flex flex-col">
+                                    <span className="text-gray-400 font-medium">
+                                        {contact.name}
+                                    </span>
+                                    <span className="text-gray-500 text-sm">
+                                        {contact.value}
+                                    </span>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
 
             {/* Bottom Bar */}
-            <div className="bg-red-700 text-white py-4 px-6">
+            <div className="bg-red-800 text-white py-4 px-6">
                 <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
                     <p>&copy; {new Date().getFullYear()} Sudarshan Security Services. All Rights Reserved.</p>
                     <p>Technology Partner: <strong>SRIYOG Consulting</strong></p>
