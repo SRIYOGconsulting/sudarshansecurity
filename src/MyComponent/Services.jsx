@@ -53,12 +53,12 @@ export default function Services() {
         {/* Header Section */}
         <div className='text-center mb-16'>
           <h1 className='text-4xl md:text-5xl font-bold text-gray-900 mb-4'>
-            Our <span className='text-green-600'>Services</span>
+            Our <span className='text-red-600'>Services</span>
           </h1>
           <p className='text-xl text-gray-600 max-w-3xl mx-auto'>
             Professional security solutions tailored to protect your business, assets, and people
           </p>
-          <div className='w-24 h-1 bg-green-500 mx-auto mt-6 rounded-full'></div>
+          <div className='w-24 h-1 bg-red-500 mx-auto mt-6 rounded-full'></div>
         </div>
 
         {/* Services List - Side by side layout */}
@@ -82,9 +82,9 @@ export default function Services() {
                       if (fallback) fallback.style.display = 'flex';
                     }}
                   />
-                  {/* Fallback if image doesn't load */}
+                 
                   <div 
-                    className="hidden w-full h-64 bg-green-100 rounded-xl items-center justify-center text-6xl"
+                    className="hidden w-full h-64 bg-red-100 rounded-xl items-center justify-center text-6xl"
                     style={{ display: 'none' }}
                   >
                     {service.icon}
@@ -95,7 +95,7 @@ export default function Services() {
               {/* Text Content Section */}
               <div className="w-full lg:w-1/2 space-y-4">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center">
                     <span className="text-xl text-white">{service.icon}</span>
                   </div>
                   <h2 className='text-3xl font-bold text-gray-800'>

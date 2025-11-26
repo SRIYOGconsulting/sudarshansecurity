@@ -1,8 +1,7 @@
 import React from 'react'
 import Stact from './Stack/Stact' 
-import Nav from "./Nav";
 import Testimonial from './Testomonial';
-import Footer from './Footer';
+
 
 export default function AboutMe() {
   const images = [
