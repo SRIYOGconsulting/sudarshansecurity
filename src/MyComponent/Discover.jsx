@@ -1,14 +1,40 @@
 import React from "react";
 import { Image2 } from "../Data";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 
 export default function Discover() {
+  const imageRef = useRef(null);
+const [isVisible, setIsVisible] = useState(false);
+
+useEffect(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+      }
+    },
+    { threshold: 0.5 } // 30% visible triggers animation
+  );
+
+  if (imageRef.current) {
+    observer.observe(imageRef.current);
+  }
+
+  return () => {
+    if (imageRef.current) {
+      observer.unobserve(imageRef.current);
+    }
+  };
+}, []);
+
+
   const navigate =useNavigate()
   const handleClick =()=>{
     navigate('/about')
   }
   return (
-    <section className="w-full bg-[#e8edf6]  px-6 md:px-20">
+    <section className="w-full bg-[#e8edf6] py-6 px-6 md:px-20">
       <div className="max-w-6xl mx-auto">
 
         {/* Top Text */}
@@ -43,13 +69,23 @@ export default function Discover() {
           </div>
 
           {/* Right: Image */}
-          <div className="flex-1">
-            <img
-              src={Image2}
-              alt="Discover"
-              className="w-full h-auto rounded-lg object-cover"
-            />
-          </div>
+     <div className="flex-1 overflow-hidden">
+  <img
+    ref={imageRef}
+    src={Image2}
+    alt="Discover"
+    className={`
+      w-full h-auto rounded-lg object-cover
+      transform transition-all duration-700 ease-out
+      ${
+        isVisible
+          ? "translate-x-0 opacity-100"
+          : "translate-x-32 opacity-0"
+      }
+    `}
+  />
+</div>
+
         </div>
 
     {/* Button */}

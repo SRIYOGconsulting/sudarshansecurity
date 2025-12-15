@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function Services() {
+      useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant' // or 'smooth' for smooth scrolling
+      });
+    }, [])
+  
   const servicesData = [
     {
       id: 1,

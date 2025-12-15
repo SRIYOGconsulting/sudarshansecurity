@@ -119,7 +119,7 @@ export default function Testimonial() {
          
               <div
     key={index}
-    className="flex-shrink-0 px-2 sm:px-3 flex justify-center"
+    className="flex-shrink-0 py-6  px-2 sm:px-3 flex justify-center"
     style={{ width: `${100 / visibleItems}%`, minWidth: '250px', maxWidth: '400px' }}
   >
               <div className="relative text-center max-w-3xl">

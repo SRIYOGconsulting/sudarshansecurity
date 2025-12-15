@@ -1,6 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
+      useEffect(() => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'instant' // or 'smooth' for smooth scrolling
+      });
+    }, [])
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",

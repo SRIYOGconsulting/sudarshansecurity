@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 
 const Footer = () => {
     // Social media configuration
@@ -62,10 +63,11 @@ const Footer = () => {
         { name: 'Services', href: '/services' },
         { name: 'FAQs', href: '/faqs' }
     ];
+    const navigate = useNavigate()
 
     // Handlers
     const handleEmailLogin = () => {
-        window.location.href = '/email-login';
+       navigate('/Emaillogin')
     };
 
     return (

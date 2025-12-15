@@ -11,12 +11,12 @@ import Footer from '../MyComponent/Footer'
 export default function Homepage() {
   return (
     <div>
-      
+       <Nav/>
       <MainImage/>
       <Discover/>
       <TestimonialCarousel/>
       <OurCommitment/>
-      
+       <Footer/>
     </div>
   )
 }

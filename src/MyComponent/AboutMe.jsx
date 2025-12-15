@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Stact from './Stack/Stact' 
 import Testimonial from './Testomonial';
 
 export default function AboutMe() {
+    useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant' // or 'smooth' for smooth scrolling
+    });
+  }, [])
 
   const images = [
     { id: 1, img: "/images/about.png" },
