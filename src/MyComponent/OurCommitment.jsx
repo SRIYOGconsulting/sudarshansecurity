@@ -2,35 +2,70 @@ import React from 'react'
 import { OurImages } from "../Data";
 
 export default function OurCommitment() {
+  const commitments = [
+  {
+    title: "Mission",
+    image: OurImages[0],
+    text:
+      "To offer the greatest defense and establish the benchmark for security services that consistently surpass the needs of our clients. Save lives and property by using creative and original ideas!",
+  },
+  {
+    title: "Vision",
+    image: OurImages[1],
+    text:
+      "A devoted security team works to reach the highest level of customer satisfaction through insightful risk solutions, exceptional service, and the best possible protection for our clients and their assets.",
+  },
+  {
+    title: "Values",
+    image: OurImages[2],
+    text:
+      "Be proud of what we do and do it with the utmost honesty, integrity, and fairness. Aim to complete each assignment in a superior way and always seek better methods through innovation.",
+  },
+];
+
   return (
-    <div className='bg-[#e8edf6] mx-auto text-gray-500 h-full mb-5 '>
-        <h1 className='italic text-center text-green-700 font-bold'> Our commitments</h1>
-        <p className='text-black font-bold text-center text-2xl p-6'> Commitment is an act, not a word</p>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center items-center gap-3  '>
-<div className='bg-white max-w-80  p-6 mx-auto text-center rounded-2xl border-amber-600 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group '>
+     <section className="bg-[#e8edf6] py-12">
+      <h1 className="italic text-center text-green-700 font-bold text-sm sm:text-base">
+        Our Commitments
+      </h1>
 
-    <h1 className='text-2xl text-black font-bold mb-1 flex justify-center gap-2 '> <img src={OurImages[0]}alt="vision" className='w-10' /> Mission</h1>
-<p className='text-black leading-relaxed'>
-             To offer the greatest defense and establish the benchmark for security services that consistently surpass the needs of our clients. Save lives and property by using creative and original ideas!
-</p>
-</div>
-<div className='bg-white max-w-80  p-6 mx-auto text-center rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group '>
+      <p className="text-black font-bold text-center text-xl sm:text-2xl md:text-3xl  p-6">
+        Commitment is an act, not a word
+      </p>
 
-    <h1 className='text-2xl text-black font-bold mb-1 flex justify-center gap-2'> <img src={OurImages[1]} alt="" className='w-10' />vision</h1>
-<p className='text-black leading-relaxed'>
-             A devoted security team, works to reach the highest level of customer satisfaction 
-          through insightful risk solutions, exceptional service, and the best possible 
-          protection for our clients and their assets.
-</p>
-</div>
-<div className='bg-white max-w-80  p-6 mx-auto text-center rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group '>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+        {commitments.map((item, index) => (
+          <div
+            key={index}
+            className="
+              bg-white 
+              p-6 sm:p-6 
+              text-center 
+              rounded-2xl 
+              shadow-lg 
+              hover:shadow-2xl 
+              transition-all 
+              duration-300 
+              hover:-translate-y-2
+             max-w-[280px] sm:max-w-[320px] md:max-w-none
+             m-auto
 
-    <h1 className='text-2xl text-black font-bold mb-1 flex justify-center gap-2'> <img src={OurImages[2]} alt="mission" className='w-10' />vision</h1>
-<p className='text-black leading-relaxed'>
-     Be proud of what we do and do it with the utmost honesty, integrity, and fairness. Aim to complete each assignment in a superior way. Always look for better methods to do everything is innovation.     
-</p>
-</div>
-</div>
-    </div>
+              min-h-[320px] md:min-h-[320px] sm:min-h-[280px] lg:min-h-[380px]
+              flex flex-col
+              border-2 border-red-50
+            "
+          >
+            <h2 className="text-lg sm:text-xl md:text-2xl text-black font-bold mb-4 flex justify-center items-center gap-2 ">
+              <img src={item.image} alt={item.title} className="w-8 sm:w-10" />
+              {item.title}
+            </h2>
+
+            <p className="text-black text-sm sm:text-base leading-relaxed">
+              {item.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
