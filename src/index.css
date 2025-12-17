@@ -5,3 +5,16 @@
     font-family: "Poppins", sans-serif;
   }
 }
+.carousel {
+  scroll-behavior: smooth;
+}
+
+/* in your CSS file, e.g., index.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
