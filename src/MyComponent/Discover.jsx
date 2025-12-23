@@ -5,32 +5,32 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Discover() {
   const imageRef = useRef(null);
-const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-useEffect(() => {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-      }
-    },
-    { threshold: 0.5 } // 30% visible triggers animation
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 } // 30% visible triggers animation
+    );
 
-  if (imageRef.current) {
-    observer.observe(imageRef.current);
-  }
-
-  return () => {
     if (imageRef.current) {
-      observer.unobserve(imageRef.current);
+      observer.observe(imageRef.current);
     }
-  };
-}, []);
+
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
 
 
-  const navigate =useNavigate()
-  const handleClick =()=>{
+  const navigate = useNavigate()
+  const handleClick = () => {
     navigate('/about')
   }
   return (
@@ -69,32 +69,31 @@ useEffect(() => {
           </div>
 
           {/* Right: Image */}
-     <div className="flex-1 overflow-hidden">
-  <img
-    ref={imageRef}
-    src={Image2}
-    alt="Discover"
-    className={`
+          <div className="flex-1 overflow-hidden">
+            <img
+              ref={imageRef}
+              src={Image2}
+              alt="Discover"
+              className={`
       w-full h-auto rounded-lg object-cover
       transform transition-all duration-700 ease-out
-      ${
-        isVisible
-          ? "translate-x-0 opacity-100"
-          : "translate-x-32 opacity-0"
-      }
+      ${isVisible
+                  ? "translate-x-0 opacity-100"
+                  : "translate-x-32 opacity-0"
+                }
     `}
-  />
-</div>
+            />
+          </div>
 
         </div>
 
-    {/* Button */}
-      <div className='flex '>
-        <button onClick={handleClick} className=" group mt-1 px-10 py-4  text-white font-semibold bg-red-800 rounded-full text-sm md:text-base hover:bg-red-800  relative overflow-hidden transition-all duration-500 ">
-       <span className='relative z-10 group-hover:text-black'>Discover MORE➤</span>
-       <span className='absolute inset-0 bg-green-800 -translate-y-full group-hover:translate-y-0 transition-transform duration-500'></span>
-        </button>
-      
+        {/* Button */}
+        <div className='flex '>
+          <button onClick={handleClick} className=" group mt-1 px-10 py-4  text-white font-semibold bg-red-800 rounded-full text-sm md:text-base hover:bg-red-800  relative overflow-hidden transition-all duration-500 ">
+            <span className='relative z-10 group-hover:text-black'>Discover MORE➤</span>
+            <span className='absolute inset-0 bg-green-800 -translate-y-full group-hover:translate-y-0 transition-transform duration-500'></span>
+          </button>
+
         </div>
 
       </div>

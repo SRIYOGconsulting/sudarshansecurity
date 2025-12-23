@@ -1,5 +1,4 @@
-import React from "react";
-import  {galleryDatas}  from "../Data/GalleryData"; 
+import { galleryDatas } from "../Data/GalleryData";
 
 export default function Gallery() {
   return (

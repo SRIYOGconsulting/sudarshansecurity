@@ -1,14 +1,4 @@
-import React, { useEffect } from 'react'
-
 export default function Message() {
-        useEffect(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'instant' // or 'smooth' for smooth scrolling
-        });
-      }, [])
-    
     const details = [
         {
             id: 1,

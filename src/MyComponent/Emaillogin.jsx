@@ -1,14 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Emaillogin() {
-        useEffect(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'instant' // or 'smooth' for smooth scrolling
-        });
-      }, [])
-    
   const [formData, setformData] = useState({
     username: "",
     password: "",

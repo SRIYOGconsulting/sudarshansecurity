@@ -1,5 +1,32 @@
 
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
+
+
+const testimonials = [
+  {
+    name: "Rakesh Mehta",
+    image: "/images/1.jpg",
+    text: 'The best way to describe this organization is "Excellent Service!" They have consistently provided us with excellent service for many years. Their commitment to customer service and professionalism has become their standard operating procedure.',
+    testshape: '/images/testshape.png'
+
+  },
+  {
+    name: "Samir Poudel",
+    image: "/images/1.jpg",
+    text: "our sudarshan employee on-site always provide an excelent service  and ae exteremely customer focused . There management is exteremely able to respond  our needs and always offer supports . we have been their customer for several years now"
+    ,
+    testshape: '/images/testshape.png'
+  },
+  {
+    name: "Sumnima Rai",
+    image: "/images/1.jpg",
+    text: "our sudarshan employee on-site always provide an excelent service  and ae exteremely customer focused . There management is exteremely able to respond  our needs and always offer supports . we have been their customer for several years now", testshape: '/images/testshape.png'
+  },
+
+];
+
+// Duplicate 3 times for smooth infinite loop
+const items = [...testimonials, ...testimonials, ...testimonials];
 
 export default function Testimonial() {
   const carouselRef = useRef(null);
@@ -7,42 +34,19 @@ export default function Testimonial() {
   const startX = useRef(0);
   const startScrollLeft = useRef(0);
 
-   const testimonials = [
-    {
-      name: "Rakesh Mehta",
-      image: "/images/1.jpg",
-      text:'The best way to describe this organization is "Excellent Service!" They have consistently provided us with excellent service for many years. Their commitment to customer service and professionalism has become their standard operating procedure.',
-      testshape:'/images/testshape.png'
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
 
-    },
-    {
-      name: "Samir Poudel",
-      image: "/images/1.jpg",
-             text: "our sudarshan employee on-site always provide an excelent service  and ae exteremely customer focused . There management is exteremely able to respond  our needs and always offer supports . we have been their customer for several years now"
-    ,
-  testshape:'/images/testshape.png'},
-    {
-      name: "Sumnima Rai",
-      image: "/images/1.jpg",
-text: "our sudarshan employee on-site always provide an excelent service  and ae exteremely customer focused . There management is exteremely able to respond  our needs and always offer supports . we have been their customer for several years now"   ,testshape:'/images/testshape.png' },
-
-  ];
-
-  // Duplicate 3 times for smooth infinite loop
-  const items = [...testimonials, ...testimonials, ...testimonials];
-useEffect(() => {
-  const carousel = carouselRef.current;
-  if (!carousel) return;
-
-  const interval = setInterval(() => {
-    const cardWidth = carousel.firstChild.offsetWidth + 16; // 16 = gap-x-6 from Tailwind
-    carousel.scrollLeft += cardWidth;
+    const interval = setInterval(() => {
+      const cardWidth = carousel.firstChild.offsetWidth + 16; // 16 = gap-x-6 from Tailwind
+      carousel.scrollLeft += cardWidth;
 
 
-  }, 5000); // every 3 seconds
+    }, 5000); // every 3 seconds
 
-  return () => clearInterval(interval); // cleanup on unmount
-}, []);
+    return () => clearInterval(interval); // cleanup on unmount
+  }, []);
 
   useEffect(() => {
     const carousel = carouselRef.current;
@@ -105,7 +109,7 @@ useEffect(() => {
 
   const onTouchEnd = stopDrag;
 
-return (
+  return (
     <div className="bg-[#e8edf6] py-12">
       <div className="max-w-6xl mx-auto px-4">
 
@@ -136,7 +140,7 @@ return (
               className="flex-shrink-0 w-full sm:w-1/2 px-2 flex justify-center transition-transform duration-300 hover:-translate-y-3 border-red-50 snap-center"
             >
               <div className="relative max-w-md w-full text-center py-6">
-              <p className="text-black">{item.name}</p>
+                <p className="text-black">{item.name}</p>
                 {/* Avatar */}
                 <div className="flex justify-start ml-2  -mb-12 relative z-10">
                   <img
@@ -155,12 +159,12 @@ return (
                   <div className="absolute -top-5 right-6 w-11 h-11 rounded-full 
                 bg-green-700 text-white text-2xl font-bold 
                 flex items-center justify-center shadow-lg">
-  ”
-</div>
+                    ”
+                  </div>
 
 
                   {/* Name */}
-               
+
 
                   {/* Text */}
                   <p className="text-gray-600 text-sm sm:text-base leading-relaxed mt-10">

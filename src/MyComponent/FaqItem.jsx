@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-export default function FaqItem() {
-const faqs= [
+const faqs = [
   {
     question: "How do you price your services?",
     answer:
@@ -43,18 +42,17 @@ const faqs= [
   },
 ];
 
-
+export default function FaqItem() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
       {faqs.map((item, index) => (
-<div
-  key={index}
-  className={`bg-white rounded-xl shadow-sm border p-5 transition-all duration-300 ${
-    openIndex === index ? 'h-auto' : 'h-fit min-h-[100px]'
-  }`}
->
+        <div
+          key={index}
+          className={`bg-white rounded-xl shadow-sm border p-5 transition-all duration-300 ${openIndex === index ? 'h-auto' : 'h-fit min-h-[100px]'
+            }`}
+        >
           <div
             className="flex justify-between items-center cursor-pointer"
             onClick={() =>

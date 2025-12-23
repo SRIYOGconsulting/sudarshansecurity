@@ -1,29 +1,20 @@
-import React, { useEffect } from 'react'
-import Stact from './Stack/Stact' 
+import Stact from './Stack/Stact'
 import Testimonial from './Testomonial';
 
+const images = [
+  { id: 1, img: "/images/about.png" },
+  { id: 2, img: "/images/discover.jpg" },
+];
+
+const services = [
+  "Security Guard",
+  "V.I.P Scout Service",
+  "Personal Bodyguard",
+  "Unarmed Security Service",
+  "Event Management Services"
+];
+
 export default function AboutMe() {
-    useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant' // or 'smooth' for smooth scrolling
-    });
-  }, [])
-
-  const images = [
-    { id: 1, img: "/images/about.png" },
-    { id: 2, img: "/images/discover.jpg" },
-  ];
-
-  const services = [
-    "Security Guard",
-    "V.I.P Scout Service", 
-    "Personal Bodyguard",
-    "Unarmed Security Service",
-    "Event Management Services"
-  ];
-
   return (
     <div className="w-full overflow-hidden pt-20 min-h-screen">
 

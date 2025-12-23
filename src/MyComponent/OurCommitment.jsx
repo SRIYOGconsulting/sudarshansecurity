@@ -1,8 +1,6 @@
-import React from 'react'
 import { OurImages } from "../Data";
 
-export default function OurCommitment() {
-  const commitments = [
+const commitments = [
   {
     title: "Mission",
     image: OurImages[0],
@@ -23,8 +21,9 @@ export default function OurCommitment() {
   },
 ];
 
+export default function OurCommitment() {
   return (
-     <section className="bg-[#e8edf6] py-12">
+    <section className="bg-[#e8edf6] py-12">
       <h1 className="italic text-center text-green-700 font-bold text-sm sm:text-base ">
         Our Commitments
       </h1>

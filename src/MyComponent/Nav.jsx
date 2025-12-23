@@ -1,18 +1,19 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { logo } from "../Data";
+
+const navItems = [
+  { id: "home", label: "Home", path: "/home" },
+  { id: "about", label: "About", path: "/about" },
+  { id: "services", label: "Services", path: "/services" },
+  { id: "message", label: "Message", path: "/messages" },
+  { id: "team", label: "Team", path: "/team" },
+  { id: "contact", label: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const navItems = [
-    { id: "home", label: "Home", path: "/home" },
-    { id: "about", label: "About", path: "/about" },
-    { id: "services", label: "Services", path: "/services" },
-    { id: "message", label: "Message", path: "/messages" },
-    { id: "team", label: "Team", path: "/team" },
-    { id: "contact", label: "Contact", path: "/contact" },
-  ];
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-red-800 bg-opacity-90 text-yellow-50 z-50 shadow-md">
@@ -27,12 +28,9 @@ const Navbar = () => {
           <ul className="hidden md:flex space-x-6">
             {navItems.map((item) => (
               <li key={item.id}>
-                <Link
-                  to={item.path}
-                  className="hover:text-yellow-300 focus:text-yellow-300 active:text-yellow-300 transition-colors duration-200"
-                >
+                <NavLink to={item.path} className={({ isActive }) => `transition-colors duration-200 ${isActive ? "text-yellow-300" : "text-white hover:text-yellow-300 active:text-yellow-300"}`}>
                   {item.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
           </ul>

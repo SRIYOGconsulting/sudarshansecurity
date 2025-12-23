@@ -1,14 +1,6 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 
 export default function Contact() {
-      useEffect(() => {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'instant' // or 'smooth' for smooth scrolling
-      });
-    }, [])
-  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -160,22 +152,22 @@ export default function Contact() {
               placeholder="Write a message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full px-6 py-5 rounded-3xl focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white"
+              className="w-full px-6 py-5 rounded-3xl focus:outline-none focus:ring-2 focus:ring-teal-500 bg-white min-h-15 max-h-40 resize-y"
             ></textarea>
             {errors.message && (
               <p className="text-red-600 text-sm ml-4 mt-1">{errors.message}</p>
             )}
           </div>
-             <div className='flex justify-center items-center p-4'>
-        <button  type="submit" className=" group mt-1 px-10 py-4  text-white font-semibold bg-red-800 rounded-full text-sm md:text-base hover:bg-red-800  relative overflow-hidden transition-all duration-500 ">
-       <span className='relative z-10 group-hover:text-black'>Send Message</span>
-       <span className='absolute inset-0 bg-green-800 -translate-y-full group-hover:translate-y-0 transition-transform duration-500'></span>
-        </button>
-      
-        </div>
+          <div className='flex justify-center items-center p-4'>
+            <button type="submit" className=" group mt-1 px-10 py-4  text-white font-semibold bg-red-800 rounded-full text-sm md:text-base hover:bg-red-800  relative overflow-hidden transition-all duration-500 ">
+              <span className='relative z-10 group-hover:text-black'>Send Message</span>
+              <span className='absolute inset-0 bg-green-800 -translate-y-full group-hover:translate-y-0 transition-transform duration-500'></span>
+            </button>
+
+          </div>
 
           {/* Submit Button - INSIDE the form */}
-      
+
         </form>
 
         {/* Google Map - Below the form */}
@@ -196,7 +188,7 @@ export default function Contact() {
             ></iframe>
           </div>
 
-   
+
         </div>
       </div>
     </div>

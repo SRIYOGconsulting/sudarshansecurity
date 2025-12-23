@@ -5,13 +5,6 @@ import { useNavigate } from "react-router-dom";
 export default function MainImage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
-    useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant' // or 'smooth' for smooth scrolling
-    });
-  }, [])
 
   // Auto-slide
   useEffect(() => {

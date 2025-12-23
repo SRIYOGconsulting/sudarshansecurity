@@ -1,73 +1,74 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 
+// Social media configuration
+const socialMedia = [
+    {
+        name: 'Facebook',
+        url: 'https://www.facebook.com/people/Sudarshan-Security-Services-Pvt-Ltd/100057211459760/',
+        icon: ['fab', 'facebook-f'],
+        color: 'bg-[#1877F2]',
+        ariaLabel: 'Visit our Facebook page'
+    },
+    {
+        name: 'Instagram',
+        url: 'https://www.instagram.com/sudarshansecurity/',
+        icon: ['fab', 'instagram'],
+        color: 'bg-gradient-to-r from-purple-500 to-pink-500',
+        ariaLabel: 'Visit our Instagram profile'
+    },
+    {
+        name: 'Twitter',
+        url: 'https://twitter.com/sudarshansecurity',
+        icon: ['fab', 'twitter'],
+        color: 'bg-[#1DA1F2]',
+        ariaLabel: 'Visit our Twitter profile'
+    },
+];
+
+// Contact information - structured like social links
+const contactLinks = [
+    {
+        name: 'Address',
+        value: 'Hospital Road, Itahari, Sub-Metropolitan City, Ward no.9 Sunsari, Nepal',
+        url: 'https://maps.google.com/?q=Hospital+Road,Itahari,Sunsari,Nepal', // Google Maps link
+        icon: 'map-marker-alt',
+        color: 'text-blue-500',
+        ariaLabel: 'View our location on Google Maps'
+    },
+    {
+        name: 'Email',
+        value: 'info@sudarshansecurity.com.np',
+        url: 'mailto:info@sudarshansecurity.com.np',
+        icon: 'envelope',
+        color: 'text-[#EA4335]',
+        ariaLabel: 'Send email to info@sudarshansecurity.com.np'
+    },
+    {
+        name: 'Phone',
+        value: '+977-9852054100',
+        url: 'tel:+9779852054100',
+        icon: 'phone',
+        color: 'text-[#34A853]',
+        ariaLabel: 'Call +977-9852054100'
+    },
+
+];
+
+// Navigation links
+const navLinks = [
+    { name: 'About us', href: '/about' },
+    { name: 'Gallery', href: '/gallery' },
+    { name: 'Services', href: '/services' },
+    { name: 'FAQs', href: '/faqs' }
+];
+
 const Footer = () => {
-    // Social media configuration
-    const socialMedia = [
-        {
-            name: 'Facebook',
-            url: 'https://www.facebook.com/people/Sudarshan-Security-Services-Pvt-Ltd/100057211459760/',
-            icon: ['fab', 'facebook-f'],
-            color: 'bg-[#1877F2]',
-            ariaLabel: 'Visit our Facebook page'
-        },
-        {
-            name: 'Instagram',
-            url: 'https://www.instagram.com/sudarshansecurity/',
-            icon: ['fab', 'instagram'],
-            color: 'bg-gradient-to-r from-purple-500 to-pink-500',
-            ariaLabel: 'Visit our Instagram profile'
-        },
-        {
-            name: 'Twitter',
-            url: 'https://twitter.com/sudarshansecurity',
-            icon: ['fab', 'twitter'],
-            color: 'bg-[#1DA1F2]',
-            ariaLabel: 'Visit our Twitter profile'
-        },
-    ];
-
-    // Contact information - structured like social links
-    const contactLinks = [
-          {
-            name: 'Address',
-            value: 'Hospital Road, Itahari, Sub-Metropolitan City, Ward no.9 Sunsari, Nepal',
-            url: 'https://maps.google.com/?q=Hospital+Road,Itahari,Sunsari,Nepal', // Google Maps link
-            icon: 'map-marker-alt',
-            color: 'text-blue-500',
-            ariaLabel: 'View our location on Google Maps'
-        },
-        {
-            name: 'Email',
-            value: 'info@sudarshansecurity.com.np',
-            url: 'mailto:info@sudarshansecurity.com.np',
-            icon: 'envelope',
-            color: 'text-[#EA4335]',
-            ariaLabel: 'Send email to info@sudarshansecurity.com.np'
-        },
-        {
-            name: 'Phone',
-            value: '+977-9852054100',
-            url: 'tel:+9779852054100',
-            icon: 'phone',
-            color: 'text-[#34A853]',
-            ariaLabel: 'Call +977-9852054100'
-        },
-      
-    ];
-
-    // Navigation links
-    const navLinks = [
-        { name: 'About us', href: '/about' },
-        { name: 'Gallery', href: '/gallery' },
-        { name: 'Services', href: '/services' },
-        { name: 'FAQs', href: '/faqs' }
-    ];
     const navigate = useNavigate()
 
     // Handlers
     const handleEmailLogin = () => {
-       navigate('/Emaillogin')
+        navigate('/Emaillogin')
     };
 
     return (
