@@ -13,6 +13,7 @@ const GalleryPage = lazy(() => import("./Pages/GalleryPage"));
 const FAQSPage = lazy(() => import("./Pages/FAQSPage"));
 
 import MainLayout from "./Layouts/MainLayout";
+import Apply from "./MyComponent/Apply";
 
 function App() {
   return (
@@ -95,7 +96,10 @@ function App() {
               </MainLayout>
             }
           />
+          <Route path="/apply" element={<MainLayout><Apply /></MainLayout>} />
         </Routes>
+        
+
       </Suspense>
       </div>
   

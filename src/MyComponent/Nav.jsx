@@ -12,6 +12,7 @@ const Navbar = () => {
     { id: "message", label: "Message", path: "/messages" },
     { id: "team", label: "Team", path: "/team" },
     { id: "contact", label: "Contact", path: "/contact" },
+    { id: "Apply", label: "Apply", path: "/apply" },
   ];
 
   return (
